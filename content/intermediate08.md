@@ -105,7 +105,7 @@ try->无异常->else->finally
 
  
 
-抛出异常
+##抛出异常
 
 我们也可以自己写一个抛出异常的例子:
 ```python
@@ -120,7 +120,7 @@ StopIteration是一个类。抛出异常时，会自动有一个中间环节，�
 raise StopIteration()
 ``` 
 
-总结
+##总结
 ```python
 try: ... except exception: ... else: ... finally: ...
 raise exception
