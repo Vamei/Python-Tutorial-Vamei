@@ -66,7 +66,12 @@ for key in dic:
 
 通过print的结果，我们可以再次确认，dic中的元素是没有顺序的。
 
- 
+
+词典的遍历也可以同时取出键和值：
+```python
+for key,value in dict_od.items():
+    print key , value , '\n'
+```
 
 ##词典的常用方法
 ```python
@@ -92,7 +97,20 @@ del是Python中保留的关键字，用于删除对象。
 ```python
 >>>print(len(dic))
 ```
- 
+
+## 词典排序
+前面我们已经谈到，词典是无序的，那么，如果需要词典内容有序，就需要使用排序方法：
+
+词典按key排序，排序后的结果存放到列表中:（这里用到了列表推导式)
+
+```python
+listRes = sorted([(k, v) for k, v in dict_rate.items()], reverse=True)
+```
+
+词典按value排序，排序后的结果存放到列表中：
+```python
+listRes = sorted([(v, k) for k, v in dict_rate.items()], reverse=True
+```
 
 ##总结
 

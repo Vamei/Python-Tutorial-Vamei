@@ -22,8 +22,11 @@ f = open(文件名，模式)
 ```python
 "r"     # 只读
 
-“w”     # 写入
+"w"     # 写入
+
+"a"     # 追加
 ```
+
  
 
 比如
@@ -43,6 +46,14 @@ content = f.readline()       # 读取一行
 content = f.readlines()      # 读取所有行，储存在列表中，每个元素是一行。
 ```
 
+Pythonic:
+读取文件更简洁的写法：
+```python
+datafile = open('datafile',"r")
+for line in datafile:
+    do_something(line)
+```
+
 写入：
 ```python
 f.write('I like apple')      # 将'I like apple'写入文件
@@ -53,7 +64,6 @@ f.write('I like apple')      # 将'I like apple'写入文件
 ```python
 f.close()
 ```
- 
 
 ##总结
 ```python
