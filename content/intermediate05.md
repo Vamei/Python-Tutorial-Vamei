@@ -32,6 +32,15 @@ for (index,char) in enumerate(S):
 ```
 实际上，enumerate()在每次循环中，返回的是一个包含两个元素的定值表(tuple)，两个元素分别赋予index和char
 
+增加下标的访问设计
+在python 3.2中，支持enumerate带第二个参数，用来指定循环的开始位置，比如，从第一个下标位置开始循环：
+```python
+array = [1, 2, 3, 4, 5]
+
+for i, e in enumerate(array,1):
+    print i, e
+
+```
  
 
 ##zip()
