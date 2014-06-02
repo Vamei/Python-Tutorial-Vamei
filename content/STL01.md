@@ -53,6 +53,7 @@ m = re.match(pattern, string)   # 从头开始检查字符串是否符合正则�
 ```
 可以从这两个函数中选择一个进行搜索。上面的例子中，我们如果使用re.match()的话，则会得到None，因为字符串的起始为‘a’， 不符合'[0-9]'的要求。
 
+
 对于返回的m, 我们使用m.group()来调用结果。（我们会在后面更详细解释m.group()）
 
  
@@ -165,6 +166,18 @@ import re
 m = re.search("output_(?P<year>\d{4})", "output_1986.txt")   #(?P<name>...) 为group命名
 print(m.group("year"))
 ``` 
+
+对比re.search和re.match
+本节开头我们用re.search实现数字子串的提取；
+m = re.search('[0-9]','abcd4ef')
+使用re.match同样实现上述功能（提取数字子串)，我们需要用到小括号'()':
+```python
+m = re.match('.*([0-9]+).*','abcd4ef')
+# 注意,我们通过m.group(1)来获取数字字串，下标0处是匹配的整个字符串
+print m.group(0), m.group(1) 
+abcd4ef 4
+```
+很明显，这里使用match方法要繁琐一些；体会两个方法的差异，搜索整个字符串中的子串使用re.search，而从头开始检查字符串是否符合正则表达式选用re.match;
 
 练习
 有一个文件，文件名为output_1981.10.21.txt 。下面使用Python： 读取文件名中的日期时间信息，并找出这一天是周几。将文件改名为output_YYYY-MM-DD-W.txt (YYYY:四位的年，MM：两位的月份，DD：两位的日，W：一位的周几，并假设周一为一周第一天)
