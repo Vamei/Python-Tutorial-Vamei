@@ -136,8 +136,7 @@ HOST = ''
 PORT = 8000
 
 # Prepare HTTP response
-text_content = '''
-HTTP/1.x 200 OK  
+text_content = '''HTTP/1.x 200 OK  
 Content-Type: text/html
 
 <head>
@@ -151,8 +150,7 @@ Content-Type: text/html
 
 # Read picture, put into HTTP format
 f = open('test.jpg','rb')
-pic_content = '''
-HTTP/1.x 200 OK  
+pic_content = '''HTTP/1.x 200 OK  
 Content-Type: image/jpg
 
 '''

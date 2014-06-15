@@ -23,8 +23,7 @@ import socket
 HOST = ''
 PORT = 8000
 
-text_content = '''
-HTTP/1.x 200 OK  
+text_content = '''HTTP/1.x 200 OK  
 Content-Type: text/html
 
 <head>
@@ -41,8 +40,7 @@ First name:<input type="text" name="firstname"><br>
 '''
 
 f = open('test.jpg','rb')
-pic_content = '''
-HTTP/1.x 200 OK  
+pic_content = '''HTTP/1.x 200 OK  
 Content-Type: image/jpg
 
 '''
@@ -121,8 +119,7 @@ import SocketServer
 HOST = ''
 PORT = 8000
 
-text_content = '''
-HTTP/1.x 200 OK  
+text_content = '''HTTP/1.x 200 OK  
 Content-Type: text/html
 
 <head>
@@ -139,8 +136,7 @@ First name:<input type="text" name="firstname"><br>
 '''
 
 f = open('test.jpg','rb')
-pic_content = '''
-HTTP/1.x 200 OK  
+pic_content = '''HTTP/1.x 200 OK  
 Content-Type: image/jpg
 
 '''
