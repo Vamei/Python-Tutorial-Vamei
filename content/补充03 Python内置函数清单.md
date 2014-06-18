@@ -10,19 +10,19 @@ print("Hello World!")
 
 在Python教程中，我们已经提到下面一些内置函数:
 
-基本数据类型 type()
+基本数据类型 `type()`
 
-反过头来看看 dir() help() len()
+反过头来看看 `dir()` `help()` `len()`
 
-词典 len()
+词典 `len()`
 
-文本文件的输入输出 open()
+文本文件的输入输出 `open()`
 
-循环设计 range() enumerate() zip()
+循环设计 `range()` `enumerate()` `zip()`
 
-循环对象 iter()
+循环对象 `iter()`
 
-函数对象 map() filter() reduce()
+函数对象 `map()` `filter()` `reduce()`
 
  
 
@@ -72,7 +72,7 @@ unichr(65)                       # 数值65对应的unicode字符
 
 bool(0)                          # 转换为相应的真假值，在Python中，0相当于False
 
-在Python中，下列对象都相当于False： [], (), {}, 0, None, 0.0, ''
+在Python中，下列对象都相当于`False`： `[]`, `()`, `{}`, `0`, `None`, `0.0`, `''`（空字符串）
 
  
 

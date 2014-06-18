@@ -9,7 +9,7 @@ import this
 ```
 该彩蛋的文档记录于PEP 20。
 
-语句执行之后，终端将显示一首"The Zen of Python"的诗，即“Python之道”。这首诗总结了Python的风格，可以指导Python程序员的编程。Python程序员会自豪宣称自己"Pythonic"。Pythonic的一个基本标准，是写出合乎“Python之道”的代码。
+语句执行之后，终端将显示一首“The Zen of Python”的诗，即“Python之道”。这首诗总结了Python的风格，可以指导Python程序员的编程。Python程序员会自豪宣称自己“Pythonic”。“Pythonic”的一个基本标准，是写出合乎“Python之道”的代码。
 
  
 
@@ -122,7 +122,7 @@ Namespaces are one honking great idea -- let's do more of those!
 
 ##历史
 
-Tim Peters于June 4, 1999的Python邮件列表，以"The Python Way"为标题，发表了“Python之道”，得到许多Python程序员的认同。另一方面，2001年的International Python Conference #10 (IPC10, IPC是PyCon的前身)会议，主办方希望在文化衫上印标语，而这一标语要能代表Python文化。到会的Python程序员们创作了500多条。组织者选了"import this"。后来，Python的作者Guido增加了this.py模块，让这个语句可以在解释器中执行，打印“Python之道”。
+Tim Peters于June 4, 1999的Python邮件列表，以“The Python Way”为标题，发表了“Python之道”，得到许多Python程序员的认同。另一方面，2001年的“International Python Conference #10” (IPC10, IPC是PyCon的前身)会议，主办方希望在文化衫上印标语，而这一标语要能代表Python文化。到会的Python程序员们创作了500多条。组织者选了"import this"。后来，Python的作者Guido增加了this.py模块，让这个语句可以在解释器中执行，打印“Python之道”。
 
 Python社区很幽默。
 
