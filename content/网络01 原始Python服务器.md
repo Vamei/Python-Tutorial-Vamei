@@ -3,11 +3,11 @@
 
  
 
-之前我的Python教程中有人留言，表示只学Python没有用，必须学会一个框架(比如Django和web.py)才能找到工作。而我的想法是，掌握一个类似于框架的高级工具是有用的，但是基础的东西可以让你永远不被淘汰。不要被工具限制了自己的发展。今天，我在这里想要展示的，就是不使用框架，甚至不使用Python标准库中的高级包，只使用标准库中的socket接口(我不是很明白套接字这个翻译，所以使用socket的英文名字)，写一个Python服务器。
+之前我的Python教程中有人留言，表示只学Python没有用，必须学会一个框架(比如`Django`和`web.py`)才能找到工作。而我的想法是，掌握一个类似于框架的高级工具是有用的，但是基础的东西可以让你永远不被淘汰。不要被工具限制了自己的发展。今天，我在这里想要展示的，就是不使用框架，甚至不使用Python标准库中的高级包，只使用标准库中的socket接口(我不是很明白套接字这个翻译，所以使用socket的英文名字)，写一个Python服务器。
 
  
 
-在当今Python服务器框架 (framework, 比如Django, Twisted, web.py等等) 横行的时代，从底层的socket开始写服务器似乎是一个出力不讨好的笨方法。框架的意义在于掩盖底层的细节，提供一套对于开发人员更加友好的API，并处理诸如MVC的布局问题。框架允许我们快速的构建一个成型而且成熟的Python服务器。然而，框架本身也是依赖于底层(比如socket)。对于底层socket的了解，不仅可以帮助我们更好的使用框架，更可以让我们明白框架是如何设计的。更进一步，如果拥有良好的底层socket编程知识和其他系统编程知识，你完全可以设计并开发一款自己的框架。如果你可以从底层socket开始，实现一个完整的Python服务器，支持用户层的协议，并处理好诸如MVC(Model-View-Control)、多线程(threading)等问题，并整理出一套清晰的函数或者类，作为接口(API)呈现给用户，你就相当于设计了一个框架。
+在当今Python服务器框架 (framework, 比如`Django`, `Twisted`, `web.py`等等) 横行的时代，从底层的socket开始写服务器似乎是一个出力不讨好的笨方法。框架的意义在于掩盖底层的细节，提供一套对于开发人员更加友好的API，并处理诸如MVC的布局问题。框架允许我们快速的构建一个成型而且成熟的Python服务器。然而，框架本身也是依赖于底层(比如socket)。对于底层socket的了解，不仅可以帮助我们更好的使用框架，更可以让我们明白框架是如何设计的。更进一步，如果拥有良好的底层socket编程知识和其他系统编程知识，你完全可以设计并开发一款自己的框架。如果你可以从底层socket开始，实现一个完整的Python服务器，支持用户层的协议，并处理好诸如MVC(Model-View-Control)、多线程(threading)等问题，并整理出一套清晰的函数或者类，作为接口(API)呈现给用户，你就相当于设计了一个框架。
 
  
 
@@ -39,9 +39,9 @@ http://yakovfain.com/2012/10/11/the-degradation-of-java-developers/
 
  
 
-在Python中，我们使用标准库中的socket包来进行底层的socket编程。
+在Python中，我们使用标准库中的`socket`包来进行底层的socket编程。
 
-首先是服务器端，我们使用bind()方法来赋予socket以固定的地址和端口，并使用listen()方法来被动的监听该端口。当有客户尝试用connect()方法连接的时候，服务器使用accept()接受连接，从而建立一个连接的socket：
+首先是服务器端，我们使用`bind()`方法来赋予socket以固定的地址和端口，并使用`listen()`方法来被动的监听该端口。当有客户尝试用`connect()`方法连接的时候，服务器使用`accept()`接受连接，从而建立一个连接的`socket`：
 
 ```python
 # Written by Vamei
@@ -72,11 +72,11 @@ conn.sendall(reply)
 # close connection
 conn.close()
 ```
-socket.socket()创建一个socket对象，并说明socket使用的是IPv4(AF_INET，IP version 4)和TCP协议(SOCK_STREAM)。
+`socket.socket()`创建一个`socket`对象，并说明`socket`使用的是IPv4(`AF_INET`，IP version 4)和TCP协议(`SOCK_STREAM`)。
 
  
 
-然后用另一台电脑作为客户，我们主动使用connect()方法来搜索服务器端的IP地址(在Linux中，你可以用$ifconfig来查询自己的IP地址)和端口，以便客户可以找到服务器，并建立连接:
+然后用另一台电脑作为客户，我们主动使用`connect()`方法来搜索服务器端的IP地址(在Linux中，你可以用`$ifconfig`来查询自己的IP地址)和端口，以便客户可以找到服务器，并建立连接:
 
 ```python
 # Written by Vamei
@@ -101,9 +101,9 @@ print 'reply is: ',reply
 # close connection
 s.close()
 ```
-在上面的例子中，我们对socket的两端都可以调用recv()方法来接收信息，调用sendall()方法来发送信息。这样，我们就可以在分处于两台计算机的两个进程间进行通信了。当通信结束的时候，我们使用close()方法来关闭socket连接。
+在上面的例子中，我们对socket的两端都可以调用`recv()`方法来接收信息，调用`sendall()`方法来发送信息。这样，我们就可以在分处于两台计算机的两个进程间进行通信了。当通信结束的时候，我们使用`close()`方法来关闭socket连接。
 
-(如果没有两台计算机做实验，也可以将客户端IP想要connect的IP改为"127.0.0.1"，这是个特殊的IP地址，用来连接当地主机。)
+(如果没有两台计算机做实验，也可以将客户端IP想要connect的IP改为"`127.0.0.1`"，这是个特殊的IP地址，用来连接当地主机。)
 
  
 
@@ -186,23 +186,21 @@ while True:
 
 ##深入HTTP服务器程序
 
-如我们上面所看到的，服务器会根据request向客户传输的两条信息text_content和pic_content中的一条，作为response文本。整个response分为起始行(start line), 头信息(head)和主体(body)三部分。起始行就是第一行:
+如我们上面所看到的，服务器会根据`request`向客户传输的两条信息`text_content`和`pic_content`中的一条，作为`response`文本。整个`response`分为起始行(start line), 头信息(head)和主体(body)三部分。起始行就是第一行:
 
 HTTP/1.x 200 OK
-它实际上又由空格分为三个片段，HTTP/1.x表示所使用的HTTP版本，200表示状态(status code)，200是HTTP协议规定的，表示服务器正常接收并处理请求，OK是供人来阅读的status code。
+它实际上又由空格分为三个片段，`HTTP/1.x`表示所使用的HTTP版本，`200`表示状态(status code)，`200`是HTTP协议规定的，表示服务器正常接收并处理请求，`OK`是供人来阅读的status code。
 
  
 
-头信息跟随起始行，它和主体之间有一个空行。这里的text_content或者pic_content都只有一行的头信息，text_content用来表示主体信息的类型为html文本：
-
-Content-Type: text/html
-而pic_content的头信息(Content-Type: image/jpg)说明主体的类型为jpg图片(image/jpg)。
+头信息跟随起始行，它和主体之间有一个空行。这里的`text_content`或者`pic_content`都只有一行的头信息，`text_content`用来表示主体信息的类型为html文本：`Content-Type: text/html`
+而`pic_content`的头信息(`Content-Type: image/jpg`)说明主体的类型为jpg图片(image/jpg)。
 
  
 
 主体信息为html或者jpg文件的内容。
 
-(注意，对于jpg文件，我们使用'rb'模式打开，是为了与windows兼容。因为在windows下，jpg被认为是二进制(binary)文件，在UNIX系统下，则不需要区分文本文件和二进制文件。)
+(注意，对于jpg文件，我们使用`'rb'`模式打开，是为了与windows兼容。因为在windows下，jpg被认为是二进制(binary)文件，在UNIX系统下，则不需要区分文本文件和二进制文件。)
 
  
 
@@ -212,15 +210,15 @@ GET /test.jpg HTTP/1.x
 Accept: text/*
  
 
-起始行可以分为三部分，第一部分为请求方法(request method)，第二部分是URL，第三部分为HTTP版本。request method可以有GET， PUT， POST， DELETE， HEAD。最常用的为GET和POST。GET是请求服务器发送资源给客户，POST是请求服务器接收客户送来的数据。当我们打开一个网页时，我们通常是使用GET方法；当我们填写表格并提交时，我们通常使用POST方法。第二部分为URL，它通常指向一个资源(服务器上的资源或者其它地方的资源)。像现在这样，就是指向当前服务器的当前目录的test.jpg。
+起始行可以分为三部分，第一部分为请求方法(request method)，第二部分是URL，第三部分为HTTP版本。request method可以有`GET`， `PUT`， `POST`， `DELETE`， `HEAD`。最常用的为`GET`和`POST`。`GET`是请求服务器发送资源给客户，`POST`是请求服务器接收客户送来的数据。当我们打开一个网页时，我们通常是使用GET方法；当我们填写表格并提交时，我们通常使用POST方法。第二部分为URL，它通常指向一个资源(服务器上的资源或者其它地方的资源)。像现在这样，就是指向当前服务器的当前目录的`test.jpg`。
 
-按照HTTP协议的规定，服务器需要根据请求执行一定的操作。正如我们在服务器程序中看到的，我们的Python程序先检查了request的方法，随后根据URL的不同，来生成不同的response(text_content或者pic_content)。随后，这个response被发送回给客户端。
+按照HTTP协议的规定，服务器需要根据请求执行一定的操作。正如我们在服务器程序中看到的，我们的Python程序先检查了`request`的方法，随后根据URL的不同，来生成不同的response(`text_content`或者`pic_content`)。随后，这个`response`被发送回给客户端。
 
  
 
 ##使用浏览器实验
 
-为了配合上面的服务器程序，我已经在放置Python程序的文件夹里，保存了一个test.jpg图片文件。我们在终端运行上面的Python程序，作为服务器端，再打开一个浏览器作为客户端。(如果有时间，你也完全可以用Python写一个客户端。原理与上面的TCP socket的客户端程序相类似。)
+为了配合上面的服务器程序，我已经在放置Python程序的文件夹里，保存了一个`test.jpg`图片文件。我们在终端运行上面的Python程序，作为服务器端，再打开一个浏览器作为客户端。(如果有时间，你也完全可以用Python写一个客户端。原理与上面的TCP socket的客户端程序相类似。)
 
 在浏览器的地址栏输入:
 
@@ -247,11 +245,11 @@ Accept-Encoding: gzip, deflate
 Connection: keep-alive
 ```
 
-我们的Python程序根据这个请求，发送给服务器text_content的内容。
+我们的Python程序根据这个请求，发送给服务器`text_content`的内容。
 
  
 
-浏览器接收到text_content之后，发现正文的html文本中有<IMG src="text.jpg" />，知道需要获得text.jpg文件来补充为图片，立即发出了第二个请求:
+浏览器接收到`text_content`之后，发现正文的html文本中有`<IMG src="text.jpg" />`，知道需要获得`text.jpg`文件来补充为图片，立即发出了第二个请求:
 
 ```bash
 GET /test.jpg HTTP/1.1
@@ -264,7 +262,7 @@ Connection: keep-alive
 Referer: http://127.0.0.1:8000/
 ```
 
-我们的Python程序分析过起始行之后，发现/test.jpg符合if条件，所以将pic_content发送给客户。
+我们的Python程序分析过起始行之后，发现`/test.jpg`符合`if`条件，所以将`pic_content`发送给客户。
 
 最后，浏览器根据html语言的语法，将html文本和图画以适当的方式显示出来。(html可参考http://www.w3schools.com/html/default.asp)
 
@@ -272,11 +270,11 @@ Referer: http://127.0.0.1:8000/
 
 ##探索的方向
 
-1) 在我们上面的服务器程序中，我们用while循环来让服务器一直工作下去。实际上，我们还可以根据我之前介绍的多线程的知识，将while循环中的内容改为多进程或者多线程工作。(参考Python多线程与同步，Python多进程初步，Python多进程探索)
+1) 在我们上面的服务器程序中，我们用`while`循环来让服务器一直工作下去。实际上，我们还可以根据我之前介绍的多线程的知识，将`while`循环中的内容改为多进程或者多线程工作。(参考Python多线程与同步，Python多进程初步，Python多进程探索)
 
 2) 我们的服务器程序还不完善，我们还可以让我们的Python程序调用Python的其他功能，以实现更复杂的功能。比如说制作一个时间服务器，让服务器向客户返回日期和时间。你还可以使用Python自带的数据库，来实现一个完整的LAMP服务器。
 
-3) socket包是比较底层的包。Python标准库中还有高层的包，比如SocketServer，SimpleHTTPServer，CGIHTTPServer，cgi。这些都包都是在帮助我们更容易的使用socket。如果你已经了解了socket，那么这些包就很容易明白了。利用这些高层的包，你可以写一个相当成熟的服务器。
+3) `socket`包是比较底层的包。Python标准库中还有高层的包，比如`SocketServer`，`SimpleHTTPServer`，`CGIHTTPServer`，`cgi`。这些都包都是在帮助我们更容易的使用socket。如果你已经了解了socket，那么这些包就很容易明白了。利用这些高层的包，你可以写一个相当成熟的服务器。
 
 4) 在经历了所有的辛苦和麻烦之后，你可能发现，框架是那么的方便，所以决定去使用框架。或者，你已经有了参与到框架开发的热情。
 
