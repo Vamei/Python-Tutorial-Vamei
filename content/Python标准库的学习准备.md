@@ -34,7 +34,7 @@ Python标准库的一部份是为了提高系统的性能(比如mmap)，所以�
 
 6) 常用系统命令以及应用，比如ls, mv, rm, mkdir, chmod, zip, tar..., 
 
-学习文件相关的内容，，是为了学习os包, shutil包中文件管理相关的部分。学习文件接口对于文本输入输出的理解很重要，也会影响到对于socket包, select包概念的理解。此外，python中的归档(archive)和压缩(compress)功能也和操作系统中的类似。
+学习文件相关的内容，是为了学习`os`包, `shutil`包中文件管理相关的部分。学习文件接口对于文本输入输出的理解很重要，也会影响到对于`socket`包, `select`包概念的理解。此外，python中的归档(archive)和压缩(compress)功能也和操作系统中的类似。
 
 7) Linux shell，比如说file name matching，对于理解glob包等有帮助。如果你对Linux的正则表达(regular expression)有了解的话，python的正则表达的学习会变得比较容易。学习Linux命令行中的参数传递对于理解python标准库中解析命令行的包也是有用的。
 
