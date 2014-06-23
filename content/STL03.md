@@ -10,7 +10,7 @@
 
 ##os.path包
 
-os.path包主要是处理路径字符串，比如说'/home/vamei/doc/file.txt'，提取出有用信息。
+`os.path`包主要是处理路径字符串，比如说`'/home/vamei/doc/file.txt'`，提取出有用信息。
 
 ```python
 import os.path
@@ -31,7 +31,7 @@ os.path.normpath(path)   # 去除路径path中的冗余。比如'/home/vamei/../
 
  
 
-os.path还可以查询文件的相关信息(metadata)。文件的相关信息不存储在文件内部，而是由操作系统维护的，关于文件的一些信息(比如文件类型，大小，修改时间)。
+`os.path`还可以查询文件的相关信息(metadata)。文件的相关信息不存储在文件内部，而是由操作系统维护的，关于文件的一些信息(比如文件类型，大小，修改时间)。
 
 ```python
 import os.path 
@@ -46,15 +46,15 @@ print(os.path.getmtime(path))  # 查询文件上一次修改的时间
 print(os.path.isfile(path))    # 路径是否指向常规文件
 print(os.path.isdir(path))     # 路径是否指向目录文件
 ```
- (实际上，这一部份类似于Linux中的ls命令的某些功能)
+ (实际上，这一部份类似于Linux中的`ls`命令的某些功能)
 
  
 
 ##glob包
 
-glob包最常用的方法只有一个, glob.glob()。该方法的功能与Linux中的ls相似(参看Linux文件管理命令)，接受一个Linux式的文件名格式表达式(filename pattern expression)，列出所有符合该表达式的文件（与正则表达式类似），将所有文件名放在一个表中返回。所以glob.glob()是一个查询目录下文件的好方法。
+`glob`包最常用的方法只有一个, `glob.glob()`。该方法的功能与Linux中的`ls`相似(参看Linux文件管理命令)，接受一个Linux式的文件名格式表达式(filename pattern expression)，列出所有符合该表达式的文件（与正则表达式类似），将所有文件名放在一个表中返回。所以`glob.glob()`是一个查询目录下文件的好方法。
 
-该文件名表达式的语法与Python自身的正则表达式不同 (你可以同时看一下fnmatch包，它的功能是检测一个文件名是否符合Linux的文件名格式表达式)。 如下：
+该文件名表达式的语法与Python自身的正则表达式不同 (你可以同时看一下`fnmatch`包，它的功能是检测一个文件名是否符合Linux的文件名格式表达式)。 如下：
 
 Filename Pattern Expression      Python Regular Expression
 
@@ -70,7 +70,7 @@ Filename Pattern Expression      Python Regular Expression
 
  
 
-我们可以用该命令找出/home/vamei下的所有文件:
+我们可以用该命令找出`/home/vamei`下的所有文件:
 ```python
 import glob
 print(glob.glob('/home/vamei/*'))
@@ -80,6 +80,6 @@ print(glob.glob('/home/vamei/*'))
 
 文件系统
 
-os.path
+`os.path`
 
-glob.glob
+`glob.glob`
