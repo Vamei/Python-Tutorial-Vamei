@@ -1,8 +1,5 @@
 #Python进阶08 异常处理
 
-
- 
-
 ##异常处理
 
 在项目开发中，异常处理是不可或缺的。异常处理帮助人们debug，通过更加丰富的信息，让人们更容易找到bug的所在。异常处理还可以提高程序的容错性。
@@ -11,7 +8,8 @@
 
 我们以它为例，来说明基本的异常处理。
 
-一个包含异常的程序:
+一个包含异常的程序：
+
 ```python
 re = iter(range(5))
 
@@ -20,13 +18,13 @@ for i in range(100):
 
 print 'HaHaHaHa'
 ```
+
 首先，我们定义了一个循环对象`re`，该循环对象将进行`5`次循环，每次使用序列的一个元素。
 
 在随后的`for`循环中，我们手工调用`next()`函数。当循环进行到第`6`次的时候，`re.next()`不会再返回元素，而是抛出(`raise`)`StopIteration`的异常。整个程序将会中断。
 
- 
-
 我们可以修改以上异常程序，直到完美的没有bug。但另一方面，如果我们在写程序的时候，知道这里可能犯错以及可能的犯错类型，我们可以针对该异常类型定义好”应急预案“。
+
 ```python
 re = iter(range(5))
 
@@ -34,15 +32,14 @@ try:
     for i in range(100):
         print re.next()
 except StopIteration:
-    print 'here is end ',i
+    print 'here is end ', i
 
 print 'HaHaHaHa'
 ```
+
 在`try`程序段中，我们放入容易犯错的部分。我们可以跟上`except`，来说明如果在`try`部分的语句发生`StopIteration`时，程序该做的事情。如果没有发生异常，则`except`部分被跳过。
 
 随后，程序将继续运行，而不是彻底中断。
-
- 
 
 完整的语法结构如下：
 
@@ -60,27 +57,26 @@ else:
 finally:
     ...
 ```
- 
 
-如果`try`中有异常发生时，将执行异常的归属，执行`except`。异常层层比较，看是否是`exception1`, `exception2`...，直到找到其归属，执行相应的`except`中的语句。如果`except`后面没有任何参数，那么表示所有的`exception`都交给这段程序处理。比如:
+如果`try`中有异常发生时，将执行异常的归属，执行`except`。异常层层比较，看是否是`exception1`、`exception2`...，直到找到其归属，执行相应的`except`中的语句。如果`except`后面没有任何参数，那么表示所有的`exception`都交给这段程序处理。比如：
+
 ```python
 try:
-    print(a*2)
+    print(a * 2)
 except TypeError:
     print("TypeError")
 except:
     print("Not Type Error & Error noted")
 ```
-由于`a`没有定义，所以是`NameError`。异常最终被`except:`部分的程序捕捉。
 
- 
+由于`a`没有定义，所以是`NameError`。异常最终被`except:`部分的程序捕捉。
 
 如果无法将异常交给合适的对象，异常将继续向上层抛出，直到被捕捉或者造成主程序报错。比如下面的程序
 
 ```python
 def test_func():
     try:
-        m = 1/0
+        m = 1 / 0
     except NameError:
         print("Catch NameError in the sub-function")
 
@@ -89,9 +85,8 @@ try:
 except ZeroDivisionError:
     print("Catch error in the main program")
 ```
-子程序的`try...except...`结构无法处理相应的除以`0`的错误，所以错误被抛给上层的主程序。
 
- 
+子程序的`try...except...`结构无法处理相应的除以`0`的错误，所以错误被抛给上层的主程序。
 
 如果`try`中没有异常，那么`except`部分将跳过，执行`else`中的语句。
 
@@ -103,19 +98,20 @@ except ZeroDivisionError:
 
 `try`->无异常->`else`->`finally`
 
- 
-
 ##抛出异常
 
-我们也可以自己写一个抛出异常的例子:
+我们也可以自己写一个抛出异常的例子：
+
 ```python
 print 'Lalala'
 raise StopIteration
 print 'Hahaha'
 ```
+
 这个例子不具备任何实际意义。只是为了说明`raise`语句的作用。
 
-`StopIteration`是一个类。抛出异常时，会自动有一个中间环节，就是生成`StopIteration`的一个对象。Python实际上抛出的，是这个对象。当然，也可以自行生成对象:
+`StopIteration`是一个类。抛出异常时，会自动有一个中间环节，就是生成`StopIteration`的一个对象。Python实际上抛出的，是这个对象。当然，也可以自行生成对象：
+
 ```python
 raise StopIteration()
 ``` 
